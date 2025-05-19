@@ -1,0 +1,40 @@
+-- Show existing databases
+SHOW DATABASES;
+
+-- Create the database
+CREATE DATABASE IF NOT EXISTS vit;
+
+-- Use the created database
+USE vit;
+
+-- Create the student table with improved structure
+CREATE TABLE IF NOT EXISTS vit_vellore (
+    full_name VARCHAR(100) NOT NULL,
+    reg_no VARCHAR(20) PRIMARY KEY,
+    school VARCHAR(100) NOT NULL,
+    graduation_year INT CHECK (graduation_year BETWEEN 2020 AND 2030),
+    s_country VARCHAR(20) DEFAULT 'India' CHECK (s_country IN ('India', 'Other')),
+    phone CHAR(10),
+    email VARCHAR(100)
+);
+
+-- Insert records
+INSERT INTO vit_vellore (full_name, reg_no, school, graduation_year)
+VALUES
+('Sandeep Kumar', '21CSE2001', 'School of Computer Science', 2025),
+('Aarav Joshi', '21EEE2002', 'School of Electrical Engineering', 2025),
+('Ishita Roy', '21MEC2003', 'School of Mechanical Engineering', 2025),
+('Tanvi Gupta', '20BCE2004', 'School of Computer Science', 2024),
+('Ritika Sen', '21CSE2005', 'School of Computer Science', 2025),
+('Manav Singh', '21ECE2006', 'School of Electronics Engineering', 2025),
+('Reyansh Patel', '20BBA2007', 'School of Business', 2024),
+('Neha Bhat', '22CIV2008', 'School of Civil Engineering', 2026),
+('Rhea Chakraborty', '21BIO2009', 'School of Bio Sciences', 2025);
+
+-- View table content
+SELECT * FROM vit_vellore;
+
+-- Update a student's name
+UPDATE vit_vellore
+SET full_name = 'Nikita Anandmani'
+WHERE full_name = 'Rhea Chakraborty';
